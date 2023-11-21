@@ -4,6 +4,7 @@ import {InputProps} from './type';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {width} from '../../assets/dimensions';
 import RegularText from '../Texts/RegularText';
+import { BLACK, LAVENDER, PURPLE_A, WHITE } from '../../constants/color';
 
 const GenericsTextInput: FunctionComponent<InputProps> = ({
   icon,
@@ -16,16 +17,15 @@ const GenericsTextInput: FunctionComponent<InputProps> = ({
   const [backgroundColor,setBackgroundColor] =  useState('');
 
 
-
   const customOnBlur = () => {
     props?.onBlur;
-    setBackgroundColor('#fff');
+    setBackgroundColor(WHITE);
 
   }
 
   const customOnFocus = () => {
     props?.onFocus;
-    setBackgroundColor('#EEE5FF');
+    setBackgroundColor(LAVENDER);
   }
 
   return (
@@ -34,7 +34,7 @@ const GenericsTextInput: FunctionComponent<InputProps> = ({
       
       <View style={[styles.IconInputContainer,{backgroundColor : backgroundColor}]}>
         <View style={styles.LeftIconContainer}>
-          <MaterialCommunityIcon name={icon} size={30}  color={'#7F3DFF'}/>
+          <MaterialCommunityIcon name={icon} size={30}  color={PURPLE_A}/>
         </View>
         <View style={styles.InputContainer}>
           <TextInput
@@ -52,7 +52,7 @@ const GenericsTextInput: FunctionComponent<InputProps> = ({
           style={styles.RightIconContainer}
           onPress={() => setPassword(!password)}
           >
-            <MaterialCommunityIcon name={password ? 'eye-off' : 'eye'} size={30} color={'#000'} />
+            <MaterialCommunityIcon name={password ? 'eye-off' : 'eye'} size={30} color={BLACK} />
           </TouchableOpacity>)
         }
         
@@ -79,10 +79,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 3,
     borderRadius: 10,
-    borderColor:"#EEE5FF"
+    borderColor:LAVENDER,
   },
   LeftIconContainer: {
-    borderColor:"#EEE5FF",
+    borderColor:LAVENDER,
     borderRightWidth: 3,
     paddingHorizontal: 10,
     justifyContent:'center',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   InputContainer: {
     width: width * 0.63,
-    paddingLeft: 15,
+    paddingLeft: 10,
     height:"100%",
     justifyContent: 'center',
     alignItems: 'flex-start',
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     width:'100%'
   },
   RightIconContainer:{
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
     justifyContent:'center',
     alignItems:'center'
   }
