@@ -1,5 +1,6 @@
 export const BLACK = '#000000';
 export const WHITE = '#FFFFFF';
+export const RED = '#FF0000';
 export const PURPLE_A = '#7F3DFF';
 export const PURPLE_B = '#8F57FF';
 export const LILAC = '#B18AFF';

@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, { useState} from 'react';
 import {ScrollView, StyleSheet, View, Text} from 'react-native';
 import RegularButton from '../../components/Button/RegularButton';
 import {
@@ -12,8 +12,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MainContainer from '../../components/Container/MainContainer';
 import LottieView from 'lottie-react-native';
 import {height, width} from '../../assets/dimensions';
+import { OnBoardingNavigationProps } from '../../Navigation/type';
 
-const OnBoarding: FunctionComponent = () => {
+const OnBoarding = ({navigation}:OnBoardingNavigationProps) => {
   const [scrollPage, setScrollPage] = useState(0);
   const onboardData = [
     {
@@ -44,12 +45,6 @@ const OnBoarding: FunctionComponent = () => {
     const page = Math.floor(xOffset / pageWidth);
     setScrollPage(page);
     console.log(scrollPage);
-  };
-
-  const styleIcon = {
-    shadowOpacity: scrollPage === 0 ? 0.5 : 0,
-    shadowOffset:
-      scrollPage === 0 ? {height: 1, width: 1} : {height: 0, width: 0},
   };
 
   return (
@@ -146,7 +141,7 @@ const OnBoarding: FunctionComponent = () => {
             marginHorizontal: 10,
           }}
           textStyle={{color: WHITE, fontWeight: '600'}}
-          onPress={() => console.log('Signup')}>
+          onPress={() => navigation.navigate("Signup")}>
           Signup
         </RegularButton>
         <RegularButton
@@ -156,7 +151,7 @@ const OnBoarding: FunctionComponent = () => {
             marginHorizontal: 10,
           }}
           textStyle={{color: PURPLE_A, fontWeight: '600'}}
-          onPress={() => console.log('Login')}>
+          onPress={() => navigation.navigate("Login")}>
           Login
         </RegularButton>
       </View>
