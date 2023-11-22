@@ -7,6 +7,9 @@ interface ExtraInputProps {
     icon : ComponentProps<typeof MaterialCommunityIcon>['name'];
     labelStyle : StyleProp<TextStyle>
     isPassword? : Boolean
+    errorMessage? : string
+    removeErrorOnFocus ? : (input : string, errorMessage: string | null) => void
+    input: string
 }
 
 

@@ -6,4 +6,5 @@ export interface ButtonProps {
     style? : StyleProp<ViewStyle>
     textStyle? : StyleProp<TextStyle>
     onPress : ((event : GestureResponderEvent) => void) | undefined
+    image ?: ReactNode;
 }

@@ -13,6 +13,7 @@ const RegularButton : FunctionComponent<ButtonProps> = (props) => {
     onPress={props.onPress}
     style={[styles.TOPContainer,props?.style]}
     >
+      {props?.image}
         <RegularText style={props.textStyle}>{props.children}</RegularText>
     </TouchableOpacity>
   )

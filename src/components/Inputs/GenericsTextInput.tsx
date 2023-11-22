@@ -1,15 +1,18 @@
-import {StyleSheet, View, TextInput, Touchable, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, TextInput, TouchableOpacity, Text} from 'react-native';
 import React, {FunctionComponent, useState} from 'react';
 import {InputProps} from './type';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {width} from '../../assets/dimensions';
 import RegularText from '../Texts/RegularText';
-import { BLACK, LAVENDER, PURPLE_A, WHITE } from '../../constants/color';
+import { BLACK, LAVENDER, PURPLE_A, RED, WHITE } from '../../constants/color';
 
 const GenericsTextInput: FunctionComponent<InputProps> = ({
   icon,
   label,
   isPassword,
+  errorMessage,
+  removeErrorOnFocus,
+  input,
   ...props
 }) => {
 
@@ -25,6 +28,9 @@ const GenericsTextInput: FunctionComponent<InputProps> = ({
 
   const customOnFocus = () => {
     props?.onFocus;
+    if(removeErrorOnFocus){
+      removeErrorOnFocus(input, '');
+    }
     setBackgroundColor(LAVENDER);
   }
 
@@ -57,6 +63,7 @@ const GenericsTextInput: FunctionComponent<InputProps> = ({
         }
         
       </View>
+      <Text style={styles.ErrorText}>{errorMessage}</Text>
     </View>
   );
 };
@@ -69,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     paddingLeft: 20,
-    marginBottom:20
+    // marginBottom:5
   },
   IconInputContainer: {
     width: '95%',
@@ -104,5 +111,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     justifyContent:'center',
     alignItems:'center'
+  },
+  ErrorText:{
+    color:RED,
+    alignSelf:'flex-start',
+    fontSize:16,
+    paddingTop:3
   }
 });
